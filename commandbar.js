@@ -5,6 +5,7 @@
 // @description  Command bar for MyOdoo
 // @author       Ben Leonard & Wessel Verheij <info@nightworks.io>
 // @downloadURL  https://raw.githubusercontent.com/XXL-Ben/XXLHoreca-Scripts/main/commandbar.js
+// @updateURL    https://raw.githubusercontent.com/XXL-Ben/XXLHoreca-Scripts/main/commandbar.js
 // @match        https://xxlhoreca.myodoo.nl/web*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=myodoo.nl
 // @grant        GM.xmlHttpRequest
