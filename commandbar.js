@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         XXLHoreca Command Bar
-// @namespace    NightWorks.io
-// @version      1.2
+// @namespace    XXLHoreca
+// @version      1.3
 // @description  Command bar for MyOdoo
 // @author       Ben Leonard & Wessel Verheij <info@nightworks.io>
 // @downloadURL  https://raw.githubusercontent.com/XXL-Ben/XXLHoreca-Scripts/main/commandbar.js
