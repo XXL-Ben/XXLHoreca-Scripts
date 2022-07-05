@@ -1,4 +1,4 @@
-# Odoo Command Bar by Ben Leonard
+# Odoo Command Bar by Ben Leonard & Wessel Verheij
 
 <html>
 <body>
