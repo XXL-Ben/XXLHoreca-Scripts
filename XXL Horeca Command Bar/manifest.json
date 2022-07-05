@@ -1,0 +1,15 @@
+{
+  "name": "Odoo Command Bar",
+  "version": "1.2",
+  "manifest_version": 3,
+  "description": "Odoo search optimization",
+  "icons": { "128": "icon.png" },
+  "action": {
+    "default_popup": "popup.html"},
+  "content_scripts": [
+   {
+      "matches": ["https://xxlhoreca.myodoo.nl/web*","https://xxlhoreca.myodoo.nl/web*"],
+      "js": ["commandbar.js"]
+    }
+   ]
+}
