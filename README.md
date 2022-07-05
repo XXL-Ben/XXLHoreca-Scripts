@@ -9,7 +9,7 @@
       <p>Product numbers</p>
       <p>POXXL</p>
     </div>
-    [<img src="/how-to.png">](https://i.imgur.com/OmSmgqA.png)
+    <img src="https://i.imgur.com/OmSmgqA.png">
    
   </body>
 </html>
