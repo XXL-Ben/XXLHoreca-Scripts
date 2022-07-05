@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         XXLHoreca Command Bar
 // @namespace    XXLHoreca
-// @version      1.4
+// @version      1.4.1
 // @description  Command bar for MyOdoo
 // @author       Ben Leonard & Wessel Verheij <info@nightworks.io>
 // @downloadURL  https://raw.githubusercontent.com/XXL-Ben/XXLHoreca-Scripts/main/commandbar.js
@@ -62,6 +62,16 @@
 					fetchPoxxl(currentValue);
 					return;
 				}
+
+                if (currentValue.includes("@")) {
+                    fetchMail(currentValue);
+                    return;
+                }
+
+                if (currentValue !== false) {
+                    fetchName(currentValue);
+                    return;
+                }
 
 				alert("Command not found");
 			}
@@ -145,4 +155,32 @@
 			alert("Does not exist");
 		}
 	};
+
+    const fetchMail = async (currentValue, callback) => {
+		let requestData = basePayload;
+		requestData.body = "{\"jsonrpc\":\"2.0\",\"method\":\"call\",\"params\":{\"model\":\"sale.order\",\"domain\":[[\"partner_id\",\"ilike\",\""+ currentValue +"\"]],\"fields\":[\"message_needaction\",\"name\",\"create_date\",\"commitment_date\",\"expected_date\",\"partner_id\",\"website_id\",\"user_id\",\"team_id\",\"warehouse_id\",\"company_id\",\"amount_untaxed\",\"amount_tax\",\"amount_total\",\"currency_id\",\"state\",\"invoice_status\",\"tag_ids\",\"activity_exception_decoration\",\"activity_exception_icon\"],\"limit\":80,\"sort\":\"\",\"context\":{\"lang\":\"en_GB\",\"tz\":\"Europe\/Amsterdam\",\"uid\":101,\"allowed_company_ids\":[1],\"bin_size\":true}},\"id\":927694673}"
+		let productData = await fetch(baseUrl, requestData);
+		let jsonData = await productData.json();
+
+		if (jsonData.result.records.length !== 0) {
+			toUrl(jsonData.result.records[0].id, 380, "sale.order", 246);
+		} else {
+			alert("Does not exist");
+		}
+	};
+
+    const fetchName = async (currentValue, callback) => {
+		let requestData = basePayload;
+		requestData.body = "{\"jsonrpc\":\"2.0\",\"method\":\"call\",\"params\":{\"model\":\"sale.order\",\"domain\":[\"|\",\"|\",[\"name\",\"ilike\",\""+ currentValue +"\"],[\"client_order_ref\",\"ilike\",\""+ currentValue +"\"],[\"partner_id\",\"child_of\",\""+ currentValue +"\"]],\"fields\":[\"message_needaction\",\"name\",\"create_date\",\"commitment_date\",\"expected_date\",\"partner_id\",\"website_id\",\"user_id\",\"team_id\",\"warehouse_id\",\"company_id\",\"amount_untaxed\",\"amount_tax\",\"amount_total\",\"currency_id\",\"state\",\"invoice_status\",\"tag_ids\",\"activity_exception_decoration\",\"activity_exception_icon\"],\"limit\":80,\"sort\":\"\",\"context\":{\"lang\":\"en_GB\",\"tz\":\"Europe\/Amsterdam\",\"uid\":101,\"allowed_company_ids\":[1],\"bin_size\":true}},\"id\":544386025}"
+		let productData = await fetch(baseUrl, requestData);
+		let jsonData = await productData.json();
+
+		if (jsonData.result.records.length !== 0) {
+			toUrl(jsonData.result.records[0].id, 380, "sale.order", 246);
+		} else {
+			alert("Does not exist");
+		}
+	};
+
+
 })();
