@@ -10,10 +10,7 @@
       <p>POXXL</p>
     </div>
     <img src="https://i.imgur.com/OmSmgqA.png">
-    <video width="320" height="240" controls>
-  <source src="[movie.mp4](https://i.imgur.com/Ky4yD17.mp4)" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+    <h4><a href='https://i.imgur.com/Ky4yD17.mp4'>Click here to see the script in action</a></h4>
    
   </body>
 </html>
