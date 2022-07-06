@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         XXLHoreca Command Bar
 // @namespace    XXLHoreca
-// @version      1.4.1
+// @version      1.4
 // @description  Command bar for MyOdoo
 // @author       Ben Leonard & Wessel Verheij <info@nightworks.io>
-// @downloadURL  https://raw.githubusercontent.com/XXL-Ben/XXLHoreca-Scripts/main/commandbar.js
-// @updateURL    https://raw.githubusercontent.com/XXL-Ben/XXLHoreca-Scripts/main/commandbar.js
+// @downloadURL  https://raw.githubusercontent.com/XXL-Ben/XXLHoreca-Scripts/main/XXL%20Horeca%20Command%20Bar/commandbar.js
+// @updateURL    https://raw.githubusercontent.com/XXL-Ben/XXLHoreca-Scripts/main/XXL%20Horeca%20Command%20Bar/commandbar.js
 // @match        https://xxlhoreca.myodoo.nl/web*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=myodoo.nl
 // @grant        GM.xmlHttpRequest
@@ -30,10 +30,12 @@
 		customSearchBar.style.height = "40px";
 		customSearchBar.style.width = "100%";
 		customSearchBar.style.padding = "7px 10px";
-		customSearchBar.style.fontSize = "14px";
+		customSearchBar.style.fontSize = "19px";
 		customSearchBar.style.border = "2px solid #68465f";
 		customSearchBar.style.backgroundColor = "#F5F5F5";
 		customSearchBar.style.color = "#666666";
+		customSearchBar.placeholder = "What are you looking for?";
+
 
 		documentBody.prepend(customSearchBar);
 
@@ -45,38 +47,52 @@
 
 				if (currentValue.match(/^[0-9]+$/)?.input) {
 					fetchProduct(currentValue);
+					customSearchBar.value = '';
 					return;
 				}
 
 				if (currentValue.startsWith("SOFR") || currentValue.startsWith("SODE") || currentValue.startsWith("SONL")) {
 					fetchSofr(currentValue);
+					customSearchBar.value = '';
 					return;
 				}
 
 				if (currentValue.startsWith("COM") || currentValue.startsWith("ORD") || currentValue.startsWith("BE")) {
 					fetchCom(currentValue);
+					customSearchBar.value = '';
 					return;
 				}
 
 				if (currentValue.startsWith("POXXL")) {
 					fetchPoxxl(currentValue);
+					customSearchBar.value = '';
 					return;
 				}
 
-                if (currentValue.includes("@")) {
-                    fetchMail(currentValue);
-                    return;
-                }
+                		if (currentValue.includes("@")) {
+                    			fetchMail(currentValue);
+					customSearchBar.value = '';
+                    			return;
+                		}
+		
+				if (currentValue.startsWith('#')) {
+					let currentvalue = currentValue.substring(1);
+					let url = 'https://xxlhoreca.myodoo.nl/web#id=' + currentvalue + '&action=526&model=helpdesk.ticket&view_type=form&cids=1&menu_id=364';
+					window.open(url, '_blank');
+					customSearchBar.value = '';
+                    			return;
+               		        }
 
-                if (currentValue !== false) {
-                    fetchName(currentValue);
-                    return;
-                }
+               			 if (currentValue !== false) {
+                   		 	fetchName(currentValue);
+				 	customSearchBar.value = '';
+                    		 	return;
+                	        }
 
 				alert("Command not found");
 			}
 		});
-	}, 3000);
+	}, 1500);
 
 	const baseUrl = 'https://xxlhoreca.myodoo.nl/web/dataset/search_read';
 	const basePayload = {
@@ -181,6 +197,8 @@
 			alert("Does not exist");
 		}
 	};
+
+
 
 
 })();
