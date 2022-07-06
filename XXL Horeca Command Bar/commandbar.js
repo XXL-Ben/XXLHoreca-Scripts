@@ -69,18 +69,18 @@
 					return;
 				}
 
-                if (currentValue.includes("@")) {
-                    fetchMail(currentValue);
+                		if (currentValue.includes("@")) {
+                    			fetchMail(currentValue);
 					customSearchBar.value = '';
-                    return;
-                }
-
+                    			return;
+                		}
+		
 				if (currentValue.startsWith('#')) {
 					let currentvalue = currentValue.substring(1);
 					let url = 'https://xxlhoreca.myodoo.nl/web#id=' + currentvalue + '&action=526&model=helpdesk.ticket&view_type=form&cids=1&menu_id=364';
 					window.open(url, '_blank');
 					customSearchBar.value = '';
-                    return;
+                    		return;
                 }
 
                 if (currentValue !== false) {
