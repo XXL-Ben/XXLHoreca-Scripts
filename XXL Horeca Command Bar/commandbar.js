@@ -80,14 +80,14 @@
 					let url = 'https://xxlhoreca.myodoo.nl/web#id=' + currentvalue + '&action=526&model=helpdesk.ticket&view_type=form&cids=1&menu_id=364';
 					window.open(url, '_blank');
 					customSearchBar.value = '';
-                    		return;
-                }
+                    			return;
+               		        }
 
-                if (currentValue !== false) {
-                    fetchName(currentValue);
-					customSearchBar.value = '';
-                    return;
-                }
+               			 if (currentValue !== false) {
+                   		 	fetchName(currentValue);
+				 	customSearchBar.value = '';
+                    		 	return;
+                	        }
 
 				alert("Command not found");
 			}
